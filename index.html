@@ -503,6 +503,12 @@ async function sendMessage() {
     ui.body.dataset.send = 'sent';
     ui.send.textContent = 'Delivered ✓';
     ui.sendStatus.textContent = 'Sent to the jar. The LED should light up shortly.';
+
+    // Play the recorded audio locally after successful upload
+    ui.preview.currentTime = 0;
+    ui.preview.play().catch(() => {
+      // Some browsers block autoplay — silently ignore
+    });
   } catch (err) {
     ui.body.dataset.send = 'ready';
     ui.send.disabled = false;
