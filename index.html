@@ -528,6 +528,7 @@ ui.jar.addEventListener('click', () => {
   else if (s === 'sealed') resetAll();
 });
 ui.reset.addEventListener('click', resetAll);
+ui.send.addEventListener('click', sendMessage);
 
 async function resampleTo(samples, fromRate, toRate) {
   if (fromRate === toRate) return samples;
