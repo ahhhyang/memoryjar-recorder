@@ -281,6 +281,7 @@
       <div class="tray-row">
         <span class="meta" id="meta"></span>
         <div style="display:flex; gap:.4rem; align-items:center;">
+          <button class="reset" id="play" type="button">▶ Play</button>
           <button class="reset" id="reset" type="button">Record again</button>
           <a class="download" id="download" download="memoryjar-message.wav">Save WAV</a>
           <button class="send" id="send" type="button">Send to jar</button>
@@ -303,6 +304,7 @@ const ui = {
   download: document.getElementById('download'),
   meta: document.getElementById('meta'),
   reset: document.getElementById('reset'),
+  play: document.getElementById('play'),
   send: document.getElementById('send'),
   sendStatus: document.getElementById('sendStatus'),
   error: document.getElementById('error'),
@@ -529,6 +531,10 @@ ui.jar.addEventListener('click', () => {
 });
 ui.reset.addEventListener('click', resetAll);
 ui.send.addEventListener('click', sendMessage);
+ui.play.addEventListener('click', () => {
+  ui.preview.currentTime = 0;
+  ui.preview.play();
+});
 
 async function resampleTo(samples, fromRate, toRate) {
   if (fromRate === toRate) return samples;
